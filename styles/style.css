@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap'); /* sans-serif */
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    cursor: default;
+}
+
+:root {
+    --blue: hsl(246, 80%, 60%);
+    --work: hsl(15, 100%, 70%);
+    --play: hsl(195, 74%, 62%);
+    --study: hsl(348, 100%, 68%);
+    --exercise: hsl(145, 58%, 55%);
+    --social: hsl(264, 64%, 52%);
+    --self-care: hsl(43, 84%, 65%);
+    --vary-dark-blue: hsl(226, 43%, 10%);
+    --dark-blue: hsl(235, 46%, 20%);
+    --desaturated-blue: hsl(235, 45%, 61%);
+    --pale-blue: hsl(236, 100%, 87%);
+
+    height: 100%;
+    font: 18px 'Rubik', sans-serif;
+    background-color: hsl(226, 43%, 10%);
+    color: white;
+}
+
+body {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+
+    max-width: 1200px;
+    height: 57%;
+
+    margin: auto;
+}
+
+p {
+    color: var(--pale-blue);
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+h1 {
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+strong {
+    font-weight: 100;
+    font-size: 3rem;
+}
+
+
+/* Main Card */
+.main-card {
+    grid-row: 1/3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    background-color: var(--dark-blue);
+    border-radius: 1rem;
+}
+
+.user-info {
+    flex: 1 1 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+
+    padding: 2rem;
+    background-color: var(--blue);
+    border-radius: 1rem;
+
+}
+.user-info .profile-image {
+    width: 50%;
+}
+.user-info .profile-image img {
+    width: 100%;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.time-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.8rem;
+    
+    padding: 1.5rem 2rem;
+    
+}
+.time-options li {
+    font-size: 1rem;
+    color: var(--pale-blue);
+    cursor: pointer;
+}
+.time-options .selected-time-option, .time-options li:hover{
+    color: white;
+}
+
+/* Info Cards */
+.card {
+    position: relative;
+    background-color: var(--dark-blue);
+    border-radius: 1rem;;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+.card[data-subject='work'] {
+    background-color: var(--work);
+}
+.card[data-subject='play'] {
+    background-color: var(--play);
+}
+.card[data-subject='study'] {
+    background-color: var(--study);
+}
+.card[data-subject='exercise'] {
+    background-color: var(--exercise);
+}
+.card[data-subject='social'] {
+    background-color: var(--social);
+}
+.card[data-subject='self-care'] {
+    background-color: var(--self-care);
+}
+
+.card .subject-icon {
+    position: absolute;
+    right: 5%;
+    top: -2%;
+    z-index: 0;
+}
+
+.card .card-content {
+    background-color: var(--dark-blue);
+    padding: 1rem 2rem;
+    border-radius: inherit;
+    z-index: 1;
+
+    height: 85%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 2fr 2fr 1fr;
+    grid-template-areas:
+        'h2 img'
+        'strong strong'
+        'p p';
+    align-items: center;
+    gap: 0.5rem;
+    cursor: inherit;
+}
+.card .card-content:hover {
+    background-color: var(--desaturated-blue);
+}
+
+.card-content h2 {
+    cursor: inherit;
+}
+.card-content .more-options {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+
+    justify-self: end;
+    color: white;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.card-content .more-options img {
+    cursor: inherit;
+}
+.whiten-image ,.card-content .more-options:hover, .more-options img:hover {
+    filter: brightness(200%);
+}
+.card-content strong {
+    grid-area: strong;
+    margin-top: 0.6rem;
+    cursor: inherit;
+}
+.card-content p {
+    grid-area: p;
+    cursor: inherit;
+}
+
+@media(max-width: 376px) {
+    :root {
+        font-size: 15px;
+    }
+    body {
+        height: initial;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        margin: 20% 0;
+        width: 90%;
+    }
+    .main-card .user-info {
+        flex-direction: row;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.7rem 1rem;
+    }
+    .main-card .user-info .profile-image {
+        width: 20%;
+    }
+    
+    .main-card .time-options {
+        padding: 1rem;
+        flex-direction: row;
+        justify-content: space-around;
+        line-height: 2.5;
+    }
+
+    .card {
+        height: 150px;
+    }
+
+    .card .card-content {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding: 1rem 2rem;
+        gap: 0;
+        height: 75%;
+    }
+    
+    .card .card-content strong {
+        grid-area: initial;
+        margin: 0;
+    }
+    .card .card-content p {
+        grid-area: initial;
+        justify-self: end;
+    }
+
+    .card-content .more-options:hover, .more-options img:hover {
+        filter: brightness(100%);
+    }
+    .card .card-content:hover {
+        background-color: var(--dark-blue);
+    }
+}
+
+
+footer {
+    position: absolute;
+    bottom: 2%;
+    width: 100%;
+    text-align: center;
+}
+footer a {
+    text-decoration: none;
+    color: rgb(147, 147, 255);
+    cursor: pointer;
+}
